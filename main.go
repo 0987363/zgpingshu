@@ -40,18 +40,36 @@ func main() {
 // <div id="content" class="grid-8-1">
 	// Find the review items
 	// http://www.zgpingshu.com/down/5109/
-	doc.Find("div").Each(func(i int, s0 *goquery.Selection) {
-		s0.Find("a").Each(func(i int, s *goquery.Selection) {
+	doc.Find("div a").Each(func(i int, s0 *goquery.Selection) {
+		if val, ok := s0.Attr("id"); ok && val == "down" {
+			if val, ok := s0.Attr("href"); ok {
+				 s0.Children().Each(func(i int, s0 *goquery.Selection) {
+					img, _ := s0.Attr("img")
+					fmt.Println("img:", img, i)
+				})
+
+				img, _ := s0.Attr("img")
+				fmt.Println("img:", img, i)
+
+				fmt.Println(val, i)
+				return
+			}
+		}
+
+		/*
+		s0.Children().Each(func(i int, s *goquery.Selection) {
 			if val, ok := s.Attr("id"); ok {
 				if val == "down" {
+					s2 := s.Next()
 					if val, ok := s.Attr("href"); ok {
-						img, _ := s0.Attr("img")
+						img, _ := s2.Attr("img")
 						fmt.Println(val, img)
 						return
 					}
 				}
 			}
 		})
+		*/
 
 
 		
