@@ -39,6 +39,7 @@ func main() {
 
 // <div id="content" class="grid-8-1">
 	// Find the review items
+	// http://www.zgpingshu.com/down/5109/
 	doc.Find("div").Each(func(i int, s0 *goquery.Selection) {
 		s0.Find("a").Each(func(i int, s *goquery.Selection) {
 			if val, ok := s.Attr("id"); ok {
